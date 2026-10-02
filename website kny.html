@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kimetsu Stream - The Cinematic Experience</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        kBlack: '#050505',
+                        kDark: '#111111',
+                        kGrey: '#1a1a1a',
+                        tanjiroGreen: '#23C48B',
+                        tanjiroDark: '#126e4d',
+                        rengokuRed: '#FF3C00',
+                        rengokuOrange: '#FF8A00',
+                        wisteriaPurple: '#7B3F9B',
+                        wisteriaLight: '#b065d6',
+                        zenitsuYellow: '#FBC02D'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Cinzel', 'serif'],
+                    },
+                    backgroundImage: {
+                        'flame-gradient': 'linear-gradient(to right, #FF3C00, #FF8A00)',
+                        'tanjiro-pattern': 'repeating-linear-gradient(45deg, #23C48B 25%, transparent 25%, transparent 75%, #23C48B 75%, #23C48B), repeating-linear-gradient(45deg, #23C48B 25%, #050505 25%, #050505 75%, #23C48B 75%, #23C48B)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #050505;
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        /* Hide scrollbar for carousel */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .text-glow {
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        
+        .neon-border-green {
+            box-shadow: 0 0 15px rgba(35, 196, 139, 0.5);
+        }
+        
+        .neon-border-flame {
+            box-shadow: 0 0 20px rgba(255, 60, 0, 0.6);
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-rengokuRed selection:text-white">
+
+    <header class="fixed w-full top-0 z-50 glassmorphism transition-all duration-300 border-b-0" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer">
+                    <span class="font-display font-bold text-2xl tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-tanjiroGreen to-white mr-2">
+                        KIMETSU
+                    </span>
+                    <span class="font-display font-bold text-xl tracking-widest text-white">STREAM</span>
+                </div>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#" class="text-gray-300 hover:text-tanjiroGreen transition-colors text-sm uppercase tracking-wider font-semibold">Beranda</a>
+                    <a href="#carousel" class="text-gray-300 hover:text-tanjiroGreen transition-colors text-sm uppercase tracking-wider font-semibold">Arc Cerita</a>
+                    <a href="#grid" class="text-gray-300 hover:text-tanjiroGreen transition-colors text-sm uppercase tracking-wider font-semibold">Kategori</a>
+                    <a href="#pricing" class="text-gray-300 hover:text-tanjiroGreen transition-colors text-sm uppercase tracking-wider font-semibold">Paket Langganan</a>
+                </nav>
+
+                <!-- Actions -->
+                <div class="flex items-center space-x-4 md:space-x-6">
+                    <button class="text-gray-300 hover:text-white transition-colors group">
+                        <i class="fas fa-search text-lg group-hover:hidden"></i>
+                        <i class="fas fa-crow text-lg hidden group-hover:inline-block text-tanjiroGreen transition-all duration-300"></i>
+                    </button>
+                    <button class="bg-flame-gradient hover:shadow-[0_0_15px_rgba(255,60,0,0.6)] text-white px-6 py-2 rounded-full font-semibold text-sm transition-all duration-300 transform hover:scale-105">
+                        Masuk / Daftar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Overlay & Image Placeholder -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://placehold.co/1920x1080/0a0a0a/FF3C00?text=Cinematic+Train+Scene" alt="Mugen Train Hero" class="w-full h-full object-cover opacity-60">
+            <div class="absolute inset-0 bg-gradient-to-t from-kBlack via-kBlack/60 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-kBlack via-kBlack/80 to-transparent"></div>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mt-20">
+            <div class="max-w-2xl">
+                <div class="inline-block px-3 py-1 mb-4 rounded-full border border-rengokuRed text-rengokuRed text-xs font-bold tracking-widest uppercase bg-rengokuRed/10 backdrop-blur-sm">
+                    Tersedia Sekarang dalam 4K
+                </div>
+                <h1 class="font-display text-5xl md:text-7xl font-bold mb-4 leading-tight text-glow">
+                    KIMETSU NO YAIBA:<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-rengokuRed to-rengokuOrange">MUGEN TRAIN</span>
+                </h1>
+                <p class="text-gray-300 text-base md:text-lg mb-8 leading-relaxed">
+                    Bergabunglah dengan Tanjiro dan Pilar Api, Kyojuro Rengoku, dalam misi mematikan di atas Kereta Infinity. Hadapi Enmu dan bayangan ancaman Iblis Bulan Atas dalam pertarungan yang akan menguji batas tekad manusia.
+                </p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <button class="bg-flame-gradient text-white px-8 py-3 rounded-full font-bold text-lg hover:neon-border-flame transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center">
+                        <i class="fas fa-play mr-2"></i> Tonton Sekarang
+                    </button>
+                    <button class="glassmorphism text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-white/10 transition-all duration-300 flex items-center justify-center">
+                        Lihat Detail
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Wisteria falling effect (pure CSS simulation) -->
+        <div class="absolute top-0 left-0 w-full h-full pointer-events-none z-0 overflow-hidden opacity-30">
+             <div class="absolute top-10 left-[10%] w-2 h-3 bg-wisteriaLight rounded-full blur-[1px] animate-[ping_4s_ease-in-out_infinite]"></div>
+             <div class="absolute top-40 left-[80%] w-3 h-4 bg-wisteriaPurple rounded-full blur-[2px] animate-[ping_6s_ease-in-out_infinite_delay-1s]"></div>
+        </div>
+    </section>
+
+    <section id="carousel" class="py-20 bg-kBlack relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="font-display text-2xl md:text-3xl font-bold mb-2 border-l-4 border-tanjiroGreen pl-4">Misi Paling Banyak Ditonton</h2>
+            <p class="text-gray-400 mb-8 pl-5 text-sm">Tren minggu ini di Kisatsutai</p>
+
+            <!-- Carousel Container -->
+            <div class="flex space-x-6 overflow-x-auto hide-scrollbar pb-8 pt-4 snap-x snap-mandatory">
+                
+                <!-- Poster 1 -->
+                <div class="relative flex-none w-64 md:w-72 h-[400px] rounded-xl overflow-hidden group snap-start cursor-pointer transition-all duration-500 hover:scale-105 hover:neon-border-green">
+                    <img src="https://placehold.co/600x900/126e4d/fff?text=Entertainment+District" alt="Entertainment District" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
+                    
+                    <!-- Hover Content -->
+                    <div class="absolute inset-0 p-6 flex flex-col justify-end translate-y-4 group-hover:translate-y-0 opacity-80 group-hover:opacity-100 transition-all duration-300">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="bg-black/60 backdrop-blur-sm text-zenitsuYellow text-xs font-bold px-2 py-1 rounded">
+                                <i class="fas fa-star mr-1"></i> 9.8
+                            </span>
+                            <span class="text-xs text-gray-300 uppercase tracking-wider font-semibold">Aksi / Iblis</span>
+                        </div>
+                        <h3 class="font-display font-bold text-xl text-white leading-tight">Entertainment District Arc</h3>
+                        <p class="text-sm text-gray-400 mt-2 line-clamp-2 hidden group-hover:block transition-all duration-300">Tengen Uzui memimpin penyusupan ke distrik hiburan untuk memburu iblis bulan atas.</p>
+                    </div>
+                </div>
+
+                <!-- Poster 2 -->
+                <div class="relative flex-none w-64 md:w-72 h-[400px] rounded-xl overflow-hidden group snap-start cursor-pointer transition-all duration-500 hover:scale-105 hover:shadow-[0_0_15px_rgba(251,192,45,0.5)]">
+                    <img src="https://placehold.co/600x900/FBC02D/000?text=Swordsmith+Village" alt="Swordsmith Village" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
+                    <div class="absolute inset-0 p-6 flex flex-col justify-end translate-y-4 group-hover:translate-y-0 opacity-80 group-hover:opacity-100 transition-all duration-300">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="bg-black/60 backdrop-blur-sm text-zenitsuYellow text-xs font-bold px-2 py-1 rounded">
+                                <i class="fas fa-star mr-1"></i> 9.5
+                            </span>
+                            <span class="text-xs text-gray-300 uppercase tracking-wider font-semibold">Petualangan</span>
+                        </div>
+                        <h3 class="font-display font-bold text-xl text-white leading-tight">Swordsmith Village Arc</h3>
+                    </div>
+                </div>
+
+                <!-- Poster 3 -->
+                <div class="relative flex-none w-64 md:w-72 h-[400px] rounded-xl overflow-hidden group snap-start cursor-pointer transition-all duration-500 hover:scale-105 hover:shadow-[0_0_15px_rgba(123,63,155,0.5)]">
+                    <img src="https://placehold.co/600x900/7B3F9B/fff?text=Hashira+Training" alt="Hashira Training" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
+                    <div class="absolute inset-0 p-6 flex flex-col justify-end translate-y-4 group-hover:translate-y-0 opacity-80 group-hover:opacity-100 transition-all duration-300">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="bg-black/60 backdrop-blur-sm text-zenitsuYellow text-xs font-bold px-2 py-1 rounded">
+                                <i class="fas fa-star mr-1"></i> 9.2
+                            </span>
+                            <span class="text-xs text-gray-300 uppercase tracking-wider font-semibold">Slice of Life</span>
+                        </div>
+                        <h3 class="font-display font-bold text-xl text-white leading-tight">Hashira Training Arc</h3>
+                    </div>
+                </div>
+
+                <!-- Poster 4 -->
+                <div class="relative flex-none w-64 md:w-72 h-[400px] rounded-xl overflow-hidden group snap-start cursor-pointer transition-all duration-500 hover:scale-105 hover:neon-border-flame">
+                    <img src="https://placehold.co/600x900/FF3C00/fff?text=Mugen+Train+Movie" alt="Mugen Train" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
+                    <div class="absolute inset-0 p-6 flex flex-col justify-end translate-y-4 group-hover:translate-y-0 opacity-80 group-hover:opacity-100 transition-all duration-300">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="bg-black/60 backdrop-blur-sm text-zenitsuYellow text-xs font-bold px-2 py-1 rounded">
+                                <i class="fas fa-star mr-1"></i> 9.9
+                            </span>
+                            <span class="text-xs text-gray-300 uppercase tracking-wider font-semibold">Movie / Epik</span>
+                        </div>
+                        <h3 class="font-display font-bold text-xl text-white leading-tight">Mugen Train: The Movie</h3>
+                    </div>
+                </div>
+                
+                 <!-- Poster 5 (Extra for scrolling) -->
+                 <div class="relative flex-none w-64 md:w-72 h-[400px] rounded-xl overflow-hidden group snap-start cursor-pointer transition-all duration-500 hover:scale-105 hover:neon-border-green">
+                    <img src="https://placehold.co/600x900/23C48B/000?text=Season+1+Origin" alt="Season 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
+                    <div class="absolute inset-0 p-6 flex flex-col justify-end translate-y-4 group-hover:translate-y-0 opacity-80 group-hover:opacity-100 transition-all duration-300">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="bg-black/60 backdrop-blur-sm text-zenitsuYellow text-xs font-bold px-2 py-1 rounded">
+                                <i class="fas fa-star mr-1"></i> 9.4
+                            </span>
+                            <span class="text-xs text-gray-300 uppercase tracking-wider font-semibold">Origin</span>
+                        </div>
+                        <h3 class="font-display font-bold text-xl text-white leading-tight">Kamakado Tanjiro Risshi Arc</h3>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="grid" class="py-20 bg-kDark border-t border-white/5 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="font-display text-2xl md:text-3xl font-bold mb-8 text-center">Arsip Kisatsutai</h2>
+            
+            <!-- Filter Tabs -->
+            <div class="flex flex-wrap justify-center gap-2 md:gap-4 mb-10">
+                <button onclick="filterGrid('all')" class="filter-btn active bg-tanjiroGreen text-white px-5 py-2 rounded-full text-sm font-semibold transition-all shadow-[0_0_10px_rgba(35,196,139,0.5)]" data-target="all">Semua</button>
+                <button onclick="filterGrid('aksi')" class="filter-btn bg-kGrey hover:bg-gray-800 text-gray-400 px-5 py-2 rounded-full text-sm font-semibold transition-all" data-target="aksi">Pertarungan Epik</button>
+                <button onclick="filterGrid('drama')" class="filter-btn bg-kGrey hover:bg-gray-800 text-gray-400 px-5 py-2 rounded-full text-sm font-semibold transition-all" data-target="drama">Latar Belakang Karakter</button>
+                <button onclick="filterGrid('dark')" class="filter-btn bg-kGrey hover:bg-gray-800 text-gray-400 px-5 py-2 rounded-full text-sm font-semibold transition-all" data-target="dark">Kekuatan Iblis</button>
+                <button onclick="filterGrid('komedi')" class="filter-btn bg-kGrey hover:bg-gray-800 text-gray-400 px-5 py-2 rounded-full text-sm font-semibold transition-all" data-target="komedi">Latihan & Komedi</button>
+            </div>
+
+            <!-- Grid Container -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6" id="previewGrid">
+                
+                <!-- Grid Item 1 -->
+                <div class="grid-item rounded-lg overflow-hidden relative group aspect-video cursor-pointer" data-category="aksi">
+                    <img src="https://placehold.co/600x338/FF3C00/fff?text=Tengen+vs+Gyutaro" alt="Aksi" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i class="fas fa-play-circle text-4xl text-white opacity-80 group-hover:scale-110 transition-transform"></i>
+                        <span class="absolute bottom-3 left-3 font-semibold text-sm">Tengen vs Gyutaro</span>
+                    </div>
+                </div>
+
+                <!-- Grid Item 2 -->
+                <div class="grid-item rounded-lg overflow-hidden relative group aspect-video cursor-pointer" data-category="drama">
+                    <img src="https://placehold.co/600x338/3b82f6/fff?text=Giyu+Tomioka+Past" alt="Drama" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i class="fas fa-play-circle text-4xl text-white opacity-80 group-hover:scale-110 transition-transform"></i>
+                        <span class="absolute bottom-3 left-3 font-semibold text-sm">Masa Lalu Giyu</span>
+                    </div>
+                </div>
+
+                <!-- Grid Item 3 -->
+                <div class="grid-item rounded-lg overflow-hidden relative group aspect-video cursor-pointer" data-category="dark">
+                    <img src="https://placehold.co/600x338/581c87/fff?text=Kibutsuji+Muzan" alt="Dark" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i class="fas fa-play-circle text-4xl text-white opacity-80 group-hover:scale-110 transition-transform"></i>
+                        <span class="absolute bottom-3 left-3 font-semibold text-sm">Rapat Iblis Bulan</span>
+                    </div>
+                </div>
+
+                <!-- Grid Item 4 -->
+                <div class="grid-item rounded-lg overflow-hidden relative group aspect-video cursor-pointer" data-category="komedi">
+                    <img src="https://placehold.co/600x338/FBC02D/000?text=Inosuke+Training" alt="Komedi" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i class="fas fa-play-circle text-4xl text-white opacity-80 group-hover:scale-110 transition-transform"></i>
+                        <span class="absolute bottom-3 left-3 font-semibold text-sm">Latihan Pemulihan</span>
+                    </div>
+                </div>
+                
+                <!-- Grid Item 5 -->
+                <div class="grid-item rounded-lg overflow-hidden relative group aspect-video cursor-pointer" data-category="aksi">
+                    <img src="https://placehold.co/600x338/23C48B/fff?text=Tanjiro+Hinokami" alt="Aksi" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i class="fas fa-play-circle text-4xl text-white opacity-80 group-hover:scale-110 transition-transform"></i>
+                        <span class="absolute bottom-3 left-3 font-semibold text-sm">Hinokami Kagura</span>
+                    </div>
+                </div>
+                
+                <!-- Grid Item 6 -->
+                <div class="grid-item rounded-lg overflow-hidden relative group aspect-video cursor-pointer" data-category="drama">
+                    <img src="https://placehold.co/600x338/ec4899/fff?text=Nezuko+Bonds" alt="Drama" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i class="fas fa-play-circle text-4xl text-white opacity-80 group-hover:scale-110 transition-transform"></i>
+                        <span class="absolute bottom-3 left-3 font-semibold text-sm">Ikatan Saudara</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="py-24 bg-kBlack relative">
+        <!-- Background accents -->
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-wisteriaPurple/10 rounded-full blur-[100px] pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-3xl md:text-4xl font-bold mb-4">Bergabung dengan Pasukan</h2>
+                <p class="text-gray-400">Pilih peringkatmu dan nikmati misi tanpa batas.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                
+                <!-- Card 1: Mizunoto -->
+                <div class="bg-kGrey rounded-2xl p-8 border border-white/10 hover:border-white/30 transition-all duration-300 flex flex-col">
+                    <div class="mb-6">
+                        <h3 class="text-xl font-bold text-gray-300 mb-2">Mizunoto</h3>
+                        <p class="text-sm text-gray-500">Akses Harian Eceran</p>
+                    </div>
+                    <div class="mb-6">
+                        <span class="text-4xl font-display font-bold">Rp 15k</span><span class="text-gray-500"> /film</span>
+                    </div>
+                    <ul class="space-y-4 mb-8 flex-grow text-sm text-gray-300">
+                        <li class="flex items-center"><i class="fas fa-check text-tanjiroGreen mr-3"></i> Akses 1 Film (48 Jam)</li>
+                        <li class="flex items-center"><i class="fas fa-check text-tanjiroGreen mr-3"></i> Kualitas HD 1080p</li>
+                        <li class="flex items-center text-gray-500"><i class="fas fa-info-circle mr-3"></i> Terdapat jeda iklan</li>
+                    </ul>
+                    <button class="w-full py-3 rounded-lg border border-gray-500 text-gray-300 hover:bg-gray-800 transition-colors font-semibold">
+                        Pilih Mizunoto
+                    </button>
+                </div>
+
+                <!-- Card 2: Hashira (VIP) -->
+                <div class="bg-gradient-to-b from-kGrey to-[#1a0f2e] rounded-2xl p-8 border border-wisteriaPurple relative transform md:-translate-y-4 shadow-[0_0_30px_rgba(123,63,155,0.3)] flex flex-col">
+                    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                        <span class="bg-wisteriaPurple text-white text-xs font-bold uppercase tracking-wider py-1 px-4 rounded-full shadow-[0_0_10px_rgba(123,63,155,0.8)]">
+                            Best Seller
+                        </span>
+                    </div>
+                    <div class="mb-6 text-center mt-2">
+                        <h3 class="text-2xl font-bold text-white mb-2 text-glow">HASHIRA</h3>
+                        <p class="text-sm text-wisteriaLight">VIP Tahunan Bebas Hambatan</p>
+                    </div>
+                    <div class="mb-6 text-center">
+                        <span class="text-5xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-wisteriaLight to-white">Rp 499k</span><span class="text-gray-400"> /thn</span>
+                    </div>
+                    <ul class="space-y-4 mb-8 flex-grow text-sm text-gray-200">
+                        <li class="flex items-center"><i class="fas fa-gem text-wisteriaLight mr-3"></i> Kualitas 4K Ultra HD & Dolby Atmos</li>
+                        <li class="flex items-center"><i class="fas fa-gem text-wisteriaLight mr-3"></i> Bebas Iklan 100%</li>
+                        <li class="flex items-center"><i class="fas fa-gem text-wisteriaLight mr-3"></i> Bisa Download Offline</li>
+                        <li class="flex items-center"><i class="fas fa-gem text-wisteriaLight mr-3"></i> Early Access Episode Baru</li>
+                    </ul>
+                    <button class="w-full py-3 rounded-lg bg-wisteriaPurple hover:bg-wisteriaLight text-white transition-colors font-bold shadow-[0_0_15px_rgba(123,63,155,0.6)]">
+                        Menjadi Hashira
+                    </button>
+                </div>
+
+                <!-- Card 3: Kinoe -->
+                <div class="bg-kGrey rounded-2xl p-8 border border-white/10 hover:border-white/30 transition-all duration-300 flex flex-col">
+                    <div class="mb-6">
+                        <h3 class="text-xl font-bold text-gray-300 mb-2">Kinoe</h3>
+                        <p class="text-sm text-gray-500">Bulanan Standar</p>
+                    </div>
+                    <div class="mb-6">
+                        <span class="text-4xl font-display font-bold">Rp 59k</span><span class="text-gray-500"> /bln</span>
+                    </div>
+                    <ul class="space-y-4 mb-8 flex-grow text-sm text-gray-300">
+                        <li class="flex items-center"><i class="fas fa-check text-tanjiroGreen mr-3"></i> Akses Seluruh Serial</li>
+                        <li class="flex items-center"><i class="fas fa-check text-tanjiroGreen mr-3"></i> Bebas Iklan</li>
+                        <li class="flex items-center"><i class="fas fa-check text-tanjiroGreen mr-3"></i> Resolusi 2 Perangkat</li>
+                    </ul>
+                    <button class="w-full py-3 rounded-lg border border-gray-500 text-gray-300 hover:bg-gray-800 transition-colors font-semibold">
+                        Pilih Kinoe
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#030303] pt-16 pb-8 border-t border-white/10 relative overflow-hidden">
+        <!-- Subtle Wisteria Silhouette Background -->
+        <div class="absolute bottom-0 right-0 opacity-10 pointer-events-none">
+            <svg width="400" height="400" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#7B3F9B" d="M45.7,-76.4C58.9,-69.3,69.1,-55.4,78.3,-41.2C87.5,-27,95.7,-13.5,95.9,0.1C96.1,13.8,88.3,27.5,79.5,40.7C70.6,53.9,60.8,66.5,47.9,73.8C35,81.1,17.5,83.1,1.5,80.5C-14.4,77.9,-28.9,70.9,-42.6,62.8C-56.3,54.7,-69.1,45.5,-77.6,33C-86.1,20.4,-90.3,4.5,-87.3,-10.4C-84.3,-25.2,-74.2,-39,-62,-49.4C-49.8,-59.8,-35.6,-66.8,-21.9,-72.1C-8.2,-77.4,5.1,-81,20.5,-80C35.9,-79,51.3,-73.4,45.7,-76.4Z" transform="translate(100 100) scale(1.2)" />
+            </svg>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 mb-12">
+                
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <span class="font-display font-bold text-xl tracking-widest text-tanjiroGreen mr-2">KIMETSU</span>
+                        <span class="font-display font-bold text-lg tracking-widest text-white">STREAM</span>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-6 max-w-sm leading-relaxed">
+                        Platform streaming resmi Kisatsutai. Menyediakan arsip sejarah, pertarungan epik, dan dokumentasi lengkap Pasukan Pembasmi Iblis.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-kGrey flex items-center justify-center text-gray-400 hover:text-tanjiroGreen hover:bg-gray-800 transition-all border border-transparent hover:border-tanjiroGreen">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-kGrey flex items-center justify-center text-gray-400 hover:text-tanjiroGreen hover:bg-gray-800 transition-all border border-transparent hover:border-tanjiroGreen">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-kGrey flex items-center justify-center text-gray-400 hover:text-tanjiroGreen hover:bg-gray-800 transition-all border border-transparent hover:border-tanjiroGreen">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold mb-4 uppercase tracking-wider text-sm">Navigasi Markas</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Markas Besar (Tentang)</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Aturan Pasukan (S&K)</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Kebijakan Privasi</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold mb-4 uppercase tracking-wider text-sm">Pusat Bantuan</h4>
+                    <ul class="space-y-2 text-sm text-gray-400 mb-6">
+                        <li><a href="#" class="hover:text-white transition-colors"><i class="fas fa-crow mr-2 text-tanjiroGreen"></i>Panggil Gagak Kasugai</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">FAQ Pemburu Baru</a></li>
+                    </ul>
+                    
+                    <!-- Payment Methods (Monochrome) -->
+                    <div class="flex flex-wrap gap-2">
+                        <div class="bg-white/10 px-2 py-1 rounded text-xs font-bold text-gray-400">QRIS</div>
+                        <div class="bg-white/10 px-2 py-1 rounded text-xs font-bold text-gray-400">GoPay</div>
+                        <div class="bg-white/10 px-2 py-1 rounded text-xs font-bold text-gray-400">OVO</div>
+                        <div class="bg-white/10 px-2 py-1 rounded text-xs font-bold text-gray-400">BANK</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+                <p>&copy; 2026 Kimetsu Stream. All rights reserved.</p>
+                <p class="mt-2 md:mt-0">Dibuat dengan <i class="fas fa-heart text-rengokuRed mx-1"></i> oleh Pasukan Kakushi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-kBlack/90', 'border-b', 'border-white/10');
+                navbar.classList.remove('glassmorphism', 'border-b-0');
+            } else {
+                navbar.classList.add('glassmorphism', 'border-b-0');
+                navbar.classList.remove('bg-kBlack/90', 'border-b', 'border-white/10');
+            }
+        });
+
+        // Filter Grid Logic (Zero Reload)
+        function filterGrid(category) {
+            const items = document.querySelectorAll('.grid-item');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            // Update button styles
+            buttons.forEach(btn => {
+                if (btn.dataset.target === category) {
+                    // Active state
+                    btn.classList.add('bg-tanjiroGreen', 'text-white', 'shadow-[0_0_10px_rgba(35,196,139,0.5)]');
+                    btn.classList.remove('bg-kGrey', 'text-gray-400');
+                } else {
+                    // Inactive state
+                    btn.classList.remove('bg-tanjiroGreen', 'text-white', 'shadow-[0_0_10px_rgba(35,196,139,0.5)]');
+                    btn.classList.add('bg-kGrey', 'text-gray-400');
+                }
+            });
+
+            // Filter items with simple animation
+            items.forEach(item => {
+                item.classList.remove('fade-in');
+                
+                // Force a reflow to restart animation
+                void item.offsetWidth;
+                
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'block';
+                    item.classList.add('fade-in');
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+        
+        // Initialize grid
+        document.addEventListener('DOMContentLoaded', () => {
+            filterGrid('all');
+        });
+    </script>
+</body>
+</html>
